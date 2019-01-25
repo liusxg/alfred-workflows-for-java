@@ -1,5 +1,6 @@
 package com.liusxg.alfred.workflows;
 
+import com.liusxg.alfred.workflows.bean.WorkFlows;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.lang.reflect.InvocationTargetException;
@@ -14,7 +15,8 @@ public class WorkflowsApplication {
         List<String> argList = new ArrayList(Arrays.asList(args));
         try {
             if (argList.size() != 0) {
-                Class needRunClass = Class.forName("com.liusxg.alfred.workflows." + argList.get(0));
+                WorkFlows workFlow = WorkFlows.valueOf(argList.get(0));
+                Class needRunClass = Class.forName(workFlow.getFullClassPath());
                 argList.remove(0);
                 Object instance = needRunClass.getConstructor().newInstance();
                 String json = ((AbstractWorkflow) instance).execute(argList);

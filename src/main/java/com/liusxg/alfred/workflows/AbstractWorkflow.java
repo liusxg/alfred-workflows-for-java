@@ -1,6 +1,7 @@
 package com.liusxg.alfred.workflows;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liusxg.alfred.workflows.bean.AlfredResponse;
 import okhttp3.OkHttpClient;
 
 import java.util.List;
